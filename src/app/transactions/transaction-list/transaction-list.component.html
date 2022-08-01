@@ -15,8 +15,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        
+                    <tr *ngFor='let transaction of transactions'>
+                        <td>{{ transaction.transactionDate }}</td> 
+                        <td> 
+                            <img [src]='transaction.transactionType' alt="transaction type"> 
+                        </td> 
+                        <td>{{ transaction.transactionLabel }}</td> 
+                        <td>{{ transaction.transactionDescription }}</td> 
+                        <td>{{ transaction.transactionValue }}</td> 
                     </tr>
                 </tbody>
             </table>
