@@ -1,0 +1,105 @@
+<div class="card">
+  <h1>Ajouter un bénéficiaire</h1>
+  <form [formGroup]="beneficiaireForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <div class="form-floating">
+        <select
+          class="form-select"
+          id="pays"
+          aria-label="Pays/Region"
+          formControlName="pays"
+        >
+          <option [ngValue]="listPays[0]" selected>{{ listPays[0]}}</option>
+          <option
+            *ngFor="let p of listPays | slice: 1:3; trackBy: trackByFn"
+            [ngValue]="p"
+          >
+            {{ p }}
+          </option>
+        </select>
+        <label for="floatingSelect">Pays/Region</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="iban" class="col-sm-2 col-form-label col-form-label-lg"
+        >IBAN:</label
+      >
+      <div class="col-sm-10">
+        <input
+          class="form-control form-control-lg"
+          formControlName="iban"
+          type="text"
+          class="form-control"
+          id="iban"
+          placeholder="27 caractères commençant par 2 lettres"
+          (focus)="ibanNotFocused = false"
+          (focusout)="ibanNotFocused = true"
+        />
+        <p
+          class="errorMsg"
+          *ngIf="
+            this.beneficiaireForm.get('iban')?.hasError('ibanError') &&
+            ibanNotFocused
+          "
+        >
+          {{ this.beneficiaireForm.get("iban")?.errors?.ibanError }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="nom" class="col-sm-2 col-form-label col-form-label-lg"
+        >Nom:</label
+      >
+      <div class="col-sm-10">
+        <input
+          class="form-control form-control-lg"
+          formControlName="nom"
+          type="text"
+          class="form-control"
+          id="nom"
+          placeholder="Nom et prénom du bénéficiaire"
+          (focus)="nameNotFocused = false"
+          (focusout)="nameNotFocused = true"
+        />
+        <p
+          class="errorMsg"
+          *ngIf="this.beneficiaireForm.get('nom')?.errors && nameNotFocused"
+        >
+         * Ce champ ne peut pas être nul
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="address" class="col-sm-2 col-form-label col-form-label-lg"
+        >Adresse:</label
+      >
+      <div class="col-sm-10">
+        <input
+          class="form-control form-control-lg"
+          formControlName="address"
+          type="text"
+          class="form-control"
+          id="address"
+          placeholder="Adresse postale du bénéficiaire"
+          (focus)="addressNotFocused = false"
+          (focusout)="addressNotFocused = true"
+        />
+        <p
+          class="errorMsg"
+          *ngIf="
+            this.beneficiaireForm.get('address')?.errors && addressNotFocused
+          "
+        >
+         * Ce champ ne peut pas être nul
+        </p>
+      </div>
+    </div>
+
+    <button value="submit" class="button" [disabled]="!beneficiaireForm.valid">
+      Créer
+    </button>
+  </form>
+</div>
