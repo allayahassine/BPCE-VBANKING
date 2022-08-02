@@ -1,0 +1,38 @@
+.card {
+  padding: 1.5%;
+  margin: 0 auto;
+  margin-top: 1.5%;
+  max-width: 50vw;
+  border: solid 2px;
+  border-radius: unset;
+}
+
+select {
+  margin: 1.5% 0;
+  margin-bottom: 5.2%;
+}
+
+.button {
+  display: inline-block;
+  float: right;
+  padding: auto;
+  width: 150px;
+  height: 50px;
+  background-color: #008cba;
+  border: 1px solid #034459;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+button:disabled,
+button[disabled]{
+  background-color: gray;
+  cursor: not-allowed;
+}
+.errorMsg {
+  color: #ff0033;
+  font-size: 12px;
+}
